@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CarsShowsBooksSports</string>
+    <string name="meniu_principal">Meniu Principal</string>
+    <string name="cars">🚗 Cars</string>
+    <string name="series">🎌 Series</string>
+    <string name="books">📚 Books</string>
+    <string name="sports">🏀 Sports</string>
+
+</resources>
