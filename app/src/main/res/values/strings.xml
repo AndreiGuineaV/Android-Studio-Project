@@ -5,5 +5,8 @@
     <string name="series">🎌 Series</string>
     <string name="books">📚 Books</string>
     <string name="sports">🏀 Sports</string>
+    <string name="car_name">Car Name</string>
+    <string name="brand">Brand</string>
+    <string name="_2025">2025</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.carsshowsbookssports.model;
+package com.example.carsshowsbookssports.models;
 
 public class Book {
     String name;
