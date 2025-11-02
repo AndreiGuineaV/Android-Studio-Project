@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="57dp"
         android:layout_margin="0dp"
         android:text="@string/meniu_principal"
         android:textAlignment="center"

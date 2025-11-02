@@ -8,5 +8,7 @@
     <string name="car_name">Car Name</string>
     <string name="brand">Brand</string>
     <string name="_2025">2025</string>
+    <string name="menu">Menu</string>
+    <string name="add_car">Add Car</string>
 
 </resources>
