@@ -14,6 +14,7 @@ import com.example.carsshowsbookssports.R;
 import com.example.carsshowsbookssports.adapters.AddCarAdapter;
 import com.example.carsshowsbookssports.models.Car;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class AddCarActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button confirmAddButton;
+    private Button backToCarsButton;
     private AddCarAdapter addCarAdapter;
     private List<Car> availableCars;
     private Car selectedCar = null;
@@ -33,8 +35,17 @@ public class AddCarActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewAvailableCars);
         confirmAddButton = findViewById(R.id.buttonConfirmAdd);
+        backToCarsButton = findViewById(R.id.buttonBacktoCars);
 
         availableCars = getAvailableCars();
+        // primim lista mașinilor deja adăugate
+        List<Car> addedCars = (List<Car>) getIntent().getSerializableExtra("addedCars", ArrayList.class);
+
+        // eliminăm din availableCars pe cele deja adăugate
+        if (addedCars != null) {
+                availableCars.removeIf(car -> addedCars.stream().anyMatch(added -> added.getName().equals(car.getName())));
+        }
+
 
         addCarAdapter = new AddCarAdapter(this, availableCars, car -> {
             selectedCar = car;
@@ -46,12 +57,17 @@ public class AddCarActivity extends AppCompatActivity {
         confirmAddButton.setOnClickListener(v -> {
             if (selectedCar != null) {
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra("selectedCar", selectedCar);
+                resultIntent.putExtra("selectedCar", (Serializable) selectedCar);
                 setResult(RESULT_OK, resultIntent);
                 finish(); // închide AddCarActivity
+
             } else {
                 Toast.makeText(this, "Selectează o mașină înainte de a adăuga!", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        backToCarsButton.setOnClickListener(v -> {
+            finish();
         });
 
     }

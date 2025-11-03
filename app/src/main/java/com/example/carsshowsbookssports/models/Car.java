@@ -1,8 +1,13 @@
 package com.example.carsshowsbookssports.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
-public class Car implements Serializable {
+public class Car implements Serializable, Parcelable {
 
     String name;
     String brand;
@@ -16,45 +21,46 @@ public class Car implements Serializable {
         this.imageResId = imageResId;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
+    protected Car(Parcel in) {
+        name = in.readString();
+        brand = in.readString();
+        year = in.readInt();
+        imageResId = in.readInt();
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
+    public static final Creator<Car> CREATOR = new Creator<Car>() {
+        @Override
+        public Car createFromParcel(Parcel in) {
+            return new Car(in);
+        }
 
-    public int getYear() {
-        return year;
-    }
+        @Override
+        public Car[] newArray(int size) {
+            return new Car[size];
+        }
+    };
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getImageResId() {
-        return imageResId;
-    }
-
-    public void setImageResId(int imageResId) {
-        this.imageResId = imageResId;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", brand='" + brand + '\'' +
-                ", year=" + year +
-                ", imageResId=" + imageResId +
-                '}';
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(brand);
+        dest.writeInt(year);
+        dest.writeInt(imageResId);
     }
+
+    // GETTERE
+    public String getName() { return name; }
+    public String getBrand() { return brand; }
+    public int getYear() { return year; }
+    public int getImageResId() { return imageResId; }
 }
+

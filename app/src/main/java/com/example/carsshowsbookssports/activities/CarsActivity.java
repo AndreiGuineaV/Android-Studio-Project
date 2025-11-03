@@ -67,6 +67,7 @@ public class CarsActivity extends AppCompatActivity {
 
         btnAddCar.setOnClickListener(v -> {
             Intent intent = new Intent(CarsActivity.this, AddCarActivity.class);
+            intent.putExtra("addedCars", new ArrayList<>(carList));
             addCarLauncher.launch(intent);
         });
 
@@ -76,5 +77,4 @@ public class CarsActivity extends AppCompatActivity {
         });
 
     }
-
 }

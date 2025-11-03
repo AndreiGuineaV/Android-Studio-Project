@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.carsshowsbookssports.R;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
