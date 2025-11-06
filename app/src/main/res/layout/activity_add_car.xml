@@ -2,26 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <TextView
+        android:id="@+id/textViewSelect"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="60dp"
+        android:layout_weight="1"
+        android:text="@string/select_a_car"
+        android:textSize="20sp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAvailableCars"
         android:layout_width="match_parent"
         android:layout_height="482dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1" />
 
     <Button
         android:id="@+id/buttonConfirmAdd"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="Add Car" />
+        android:text="@string/add_car_in_the_list" />
 
     <Button
         android:id="@+id/buttonBacktoCars"
-        android:layout_width="120dp"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="Back" />
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/back" />
+
+
 </LinearLayout>

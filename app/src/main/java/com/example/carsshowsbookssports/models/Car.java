@@ -12,13 +12,25 @@ public class Car implements Serializable, Parcelable {
     String name;
     String brand;
     int year;
-    int imageResId;
+    //int imageResId;
+    String description;
 
-    public Car(String name, String brand, int year, int imageResId) {
+    String imageUri;
+
+//    public Car(String name, String brand, int year, int imageResId, String description) {
+//        this.name = name;
+//        this.brand = brand;
+//        this.year = year;
+//        this.imageResId = imageResId;
+//        this.description = description;
+//    }
+
+    public Car(String name, String brand, int year, String imageUri, String description) {
         this.name = name;
         this.brand = brand;
         this.year = year;
-        this.imageResId = imageResId;
+        this.imageUri = imageUri;
+        this.description = description;
     }
 
     public void setName(String name) {
@@ -29,7 +41,9 @@ public class Car implements Serializable, Parcelable {
         name = in.readString();
         brand = in.readString();
         year = in.readInt();
-        imageResId = in.readInt();
+        //imageResId = in.readInt();
+        imageUri = in.readString();
+        description = in.readString();
     }
 
     public static final Creator<Car> CREATOR = new Creator<Car>() {
@@ -54,13 +68,23 @@ public class Car implements Serializable, Parcelable {
         dest.writeString(name);
         dest.writeString(brand);
         dest.writeInt(year);
-        dest.writeInt(imageResId);
+        //dest.writeInt(imageResId);
+        dest.writeString(imageUri);
+        dest.writeString(description);
     }
 
     // GETTERE
     public String getName() { return name; }
     public String getBrand() { return brand; }
     public int getYear() { return year; }
-    public int getImageResId() { return imageResId; }
+   // public int getImageResId() { return imageResId; }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
 }
 

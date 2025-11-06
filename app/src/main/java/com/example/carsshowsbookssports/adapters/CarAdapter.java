@@ -1,6 +1,8 @@
 package com.example.carsshowsbookssports.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,17 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     private Context context;
     private List<Car> carList;
 
+    public interface OnCarClickListener {
+        void onCarClick(Car car, View v);
+    }
+
+    private OnCarClickListener listener;
+
+    public CarAdapter(Context context, List<Car> carList, OnCarClickListener listener) {
+        this.context = context;
+        this.carList = carList;
+        this.listener = listener;
+    }
     public CarAdapter(Context context, List<Car> carList) {
         this.context = context;
         this.carList = carList;
@@ -38,7 +51,18 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         holder.textCarName.setText(car.getName());
         holder.textCarBrand.setText(car.getBrand());
         holder.textCarYear.setText(String.valueOf(car.getYear()));
-        holder.imageCar.setImageResource(car.getImageResId());
+        //holder.imageCar.setImageResource(car.getImageResId());
+        if (car.getImageUri().startsWith("content")) {
+            holder.imageCar.setImageURI(Uri.parse(car.getImageUri()));
+        } else {
+            holder.imageCar.setImageResource(Integer.parseInt(car.getImageUri()));
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            v.setBackgroundColor(Color.LTGRAY);
+            listener.onCarClick(car, v);
+        });
+
     }
 
     @Override

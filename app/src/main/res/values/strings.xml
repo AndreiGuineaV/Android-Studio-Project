@@ -10,5 +10,17 @@
     <string name="_2025">2025</string>
     <string name="menu">Menu</string>
     <string name="add_car">Add Car</string>
+    <string name="select_a_car">Select a car:</string>
+    <string name="add_car_in_the_list">Add Car in the list</string>
+    <string name="back">Back</string>
+    <string name="create_car">Create Car</string>
+    <string name="create_a_car">Create a car</string>
+    <string name="car_name_1">Car name</string>
+    <string name="brand_1">Brand</string>
+    <string name="year">Year</string>
+    <string name="description">Description</string>
+    <string name="preview_image">Preview image</string>
+    <string name="select_image">Select image</string>
+    <string name="add_your_new_created_car">Add your new created car</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.carsshowsbookssports.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,11 @@ public class AddCarAdapter extends RecyclerView.Adapter<AddCarAdapter.ViewHolder
         holder.nameText.setText(car.getName());
         holder.brandText.setText(car.getBrand());
         holder.yearText.setText(String.valueOf(car.getYear()));
-        holder.imageView.setImageResource(car.getImageResId());
+        if (car.getImageUri().startsWith("content")) {
+            holder.imageView.setImageURI(Uri.parse(car.getImageUri()));
+        } else {
+            holder.imageView.setImageResource(Integer.parseInt(car.getImageUri()));
+        }
 
         // fundal gri dacă e selectată
         if (position == selectedPosition) {
